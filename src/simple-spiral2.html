@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/paper.js"></script>
+<script type="text/paperscript" canvas="myCanvas">
+
+
+function drawShape() {
+	var total = 720;
+	var maxChange = 100;
+	var angle = 0;
+
+	var path = new Path();
+	path.strokeColor = 'CornflowerBlue ';
+	path.strokeWidth = 2;
+	var start = new Point(700, 400);
+
+	for (var i = 0; i < total; i++)
+	{
+		angle += 1;
+		var change = Math.random() * maxChange;
+		var direction = (Math.random() * 2) - 1;
+		var point2 = new Point({
+			length: change * direction + 300,
+			angle: angle
+		});
+
+		path.add(start + point2);
+	}
+
+	path.smooth();
+}
+
+drawShape();
+
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>

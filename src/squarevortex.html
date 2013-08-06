@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/paper.js"></script>
+<script type="text/paperscript" canvas="myCanvas">
+
+var total = 16;
+var rotate = 0;
+var scale = 0.8;
+var currentSize = 2000;
+
+function createPath(sideLength, rotate, color) {
+	var centre = new Point(sideLength, sideLength);
+	var size = new Size(currentSize, currentSize);
+	var rect = new Rectangle(centre, size);
+	var cornerSize = new Size(20, 20);
+	var path = new Path.RoundRectangle(rect, cornerSize);
+	path.fillColor = color;
+	path.rotate(rotate);
+	return path;
+}
+
+
+
+for (var i = 0; i < total; i++)
+{ 
+	var red = Math.random();
+	var blue = Math.random();
+	var green = Math.random();
+	var color = new Color(red, blue, green);
+	
+	rotate += 4;
+	currentSize -= 120;
+	
+	newRect = createPath(currentSize, rotate, color);
+	var layer = new Layer({
+   children: [newRect],
+   position: view.center
+	});
+}
+
+
+/*
+var centre = new Point(0, 0);
+var size = new Size(100, 100);
+var rect = new Rectangle(centre, size);
+var cornerSize = new Size(20, 20);
+var path = new Path.RoundRectangle(rect, cornerSize);
+path.fillColor = 'blue';
+
+var copy = path.clone();
+copy.fillColor = 'red';
+copy.rotate(8);
+copy.scale(1.5);
+
+var layer2 = new Layer({
+   children: [copy],
+   position: view.center
+});
+
+var layer1 = new Layer({
+   children: [path],
+   position: view.center
+});*/
+
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>

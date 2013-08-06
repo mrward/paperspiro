@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/paper.js"></script>
+<script type="text/paperscript" canvas="myCanvas">
+var howManyPaths = 20;
+var moveLength = 40;
+
+function drawWavyLine(x) {
+	var y = -10;
+	var total = 2000;
+	var path = new Path();
+	var red = Math.random();
+	var blue = Math.random();
+	var green = Math.random();
+	var color = new Color(red, blue, green);
+
+	path.strokeColor = color;
+	path.strokeWidth = 10;
+
+	var position = new Point(x, y);
+	path.add(position);
+	
+		
+	for (var i = 0; i < total; i++)
+	{ 
+		//x += (Math.random() * moveLength);
+		var howFar = (Math.random() * moveLength);
+		var direction = (Math.random() * 2) - 1;
+		x += (howFar * direction);
+		y += 5;
+		var position = new Point(x, y);
+		path.add(position);
+	}
+	path.smooth();
+
+}
+
+for (var j = 0; j < howManyPaths; j++) {
+    drawWavyLine((j + 1) * 100);
+}
+
+
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
