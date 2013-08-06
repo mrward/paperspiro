@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/paper.js"></script>
+<script type="text/paperscript" canvas="myCanvas">
+	var rect = new Rectangle(100, 100, 200, 100);
+	var path = new Path.Rectangle(rect);
+	path.strokeColor = 'brown';
+	path.strokeWidth = 10;
+	path.strokeCap = 'round';
+	path.strokeJoin = 'round';
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>

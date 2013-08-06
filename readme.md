@@ -1,0 +1,1 @@
+Some simple designs using [paper.js](http://paperjs.org)

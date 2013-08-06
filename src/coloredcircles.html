@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/paper.js"></script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+<script type="text/paperscript" canvas="myCanvas">
+
+
+var total = 50;
+var width = 1500;
+var height = 1000;
+
+for (var i = 0; i < total; i++)
+{ 
+	var radius = Math.random() * 100;
+	var x = Math.random() * width;
+	var y = Math.random() * height;
+	var position = new Point(x, y);
+	var circle = new Path.Circle(position, radius);
+	var red = Math.random();
+	var blue = Math.random();
+	var green = Math.random();
+	var color = new Color(red, blue, green);
+	circle.style = {
+		fillColor: color,
+		strokeColor: color
+	};
+}
+</script>
+
+</html>

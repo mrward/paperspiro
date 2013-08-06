@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/paper.js"></script>
+<script type="text/paperscript" canvas="myCanvas">
+var total = 800;
+var width = 1500;
+var height = 800;
+
+var path = new Path();
+path.strokeColor = 'black';
+	
+for (var i = 0; i < total; i++)
+{ 
+	var x = Math.random() * width;
+	var y = Math.random() * height;
+	var position = new Point(x, y);
+	path.add(position);
+}
+path.smooth();
+
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>

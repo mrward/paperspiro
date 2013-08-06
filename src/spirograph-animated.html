@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/paper.js"></script>
+<script type="text/paperscript" canvas="myCanvas">
+
+var path;
+var start = new Point(700, 400);
+
+	var R1 = 100;
+	var R2 = 40;
+	var n1 = 12;
+	var n2 = 20;
+
+
+function drawShape() {
+	var total = 980;
+	var angle = 0;
+
+	path = new Path();
+	path.strokeColor = 'CornflowerBlue';
+	path.strokeWidth = 1;
+
+	for (var i = 0; i < total; i++)
+	{
+	  angle += 1;
+	  var radians = angle * 360.0 / ( 2.0 * 3.14 );
+	  var x = R1 * Math.cos(n1 * radians) + R2 * Math.cos(n2 * radians);
+	  var y = R1 * Math.sin(n1 * radians) + R2 * Math.sin(n2 * radians);
+		var point = new Point(x, y);
+
+		path.add(start + point);
+	}
+
+	path.smooth();
+}
+
+//drawShape();
+
+
+var crazyAngle = 0;
+var mainPath = 	new Path();
+mainPath.strokeColor = 'CornflowerBlue';
+mainPath.strokeWidth = 1;
+//mainPath.selected = true;
+var startingPoint = new Point(700, 400);
+
+function drawShapeOnePart() {
+	if (mainPath.segments.length > 360) {
+		mainPath.removeSegment(0);
+	}
+	
+	crazyAngle += 1;
+	var radians = crazyAngle * 360.0 / ( 2.0 * 3.14 );
+	var x = R1 * Math.cos(n1 * radians) + R2 * Math.cos(n2 * radians);
+	var y = R1 * Math.sin(n1 * radians) + R2 * Math.sin(n2 * radians);
+	var point = new Point(x, y);
+
+	mainPath.add(startingPoint + point);
+
+  mainPath.smooth();
+}
+
+function onFrame(event) {
+  drawShapeOnePart();
+}
+
+
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>

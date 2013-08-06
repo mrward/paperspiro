@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/paper.js"></script>
+<script type="text/paperscript" canvas="myCanvas">
+	var path = new Path();
+	path.strokeColor = 'brown';
+	path.strokeWidth = 10;
+	path.strokeCap = 'round';
+	var start = new Point(50, 100);
+	path.moveTo(start);
+	path.lineTo(start + [100, 0]);
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
